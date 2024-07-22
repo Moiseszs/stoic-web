@@ -7,13 +7,16 @@ function Display() {
     const [quote, setQuote] = useState<Quote>()
 
     const getResults = async() =>{
-      const URL = 'https://stoic-quotes.com/api/quote'
+        const URL = 'https://stoic-quotes.com/api/quote';
+        
         await fetch(URL).then((res) => {
           return res.json()
-        }).then((data) => {
+        })
+        .then((data) => {
           let newQuote = new Quote(data['text'], data['author'])
           setQuote(() => newQuote)
-        }).catch((e) => console.log('houve erro: ' + e))
+        })
+        .catch((e) => console.log('houve erro: ' + e))
 
     }
 
